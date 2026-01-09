@@ -3,164 +3,626 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>4th Industrial Revolution Learning Hub</title>
+    <title>Dr. Marie Martin | Fourth Industrial Revolution Education Consulting</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --cream: #FAF7F2;
+            --cream-dark: #F4EFE6;
+            --gold: #C9A227;
+            --gold-light: #D4B84A;
+            --burgundy: #5D1D2E;
+            --burgundy-light: #7A2A3F;
+            --charcoal: #2C2C2C;
+            --charcoal-light: #4A4A4A;
+            --white: #FFFFFF;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-            min-height: 100vh;
-            padding: 2rem;
-            color: #e8e8e8;
+        html {
+            scroll-behavior: smooth;
         }
 
-        .container {
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--cream);
+            color: var(--charcoal);
+            line-height: 1.7;
+        }
+
+        .serif {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(250, 247, 242, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(93, 29, 46, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--burgundy);
+            text-decoration: none;
+            letter-spacing: 0.02em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--charcoal);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.03em;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--burgundy);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 8rem 2rem 4rem;
+            background: linear-gradient(135deg, var(--cream) 0%, var(--cream-dark) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 80%;
+            height: 200%;
+            background: radial-gradient(ellipse, rgba(201, 162, 39, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-eyebrow {
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 500;
+            line-height: 1.15;
+            color: var(--burgundy);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        .hero-text {
+            font-size: 1.125rem;
+            color: var(--charcoal-light);
+            max-width: 540px;
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-decoration: none;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: var(--burgundy);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: var(--burgundy-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(93, 29, 46, 0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--charcoal);
+            border: 1px solid var(--charcoal);
+        }
+
+        .btn-secondary:hover {
+            background: var(--charcoal);
+            color: var(--white);
+        }
+
+        .hero-visual {
+            position: relative;
+        }
+
+        .hero-accent-box {
+            background: var(--burgundy);
+            padding: 3rem;
+            position: relative;
+        }
+
+        .hero-accent-box::before {
+            content: '';
+            position: absolute;
+            top: -1rem;
+            left: -1rem;
+            right: 1rem;
+            bottom: 1rem;
+            border: 2px solid var(--gold);
+            z-index: -1;
+        }
+
+        .hero-quote {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-style: italic;
+            color: var(--cream);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-attribution {
+            color: var(--gold);
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+        }
+
+        /* About Section */
+        .about {
+            padding: 8rem 2rem;
+            background: var(--white);
+        }
+
+        .about-container {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .section-label {
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 500;
+            color: var(--burgundy);
+            margin-bottom: 2rem;
+        }
+
+        .about-text {
+            font-size: 1.125rem;
+            color: var(--charcoal-light);
+            line-height: 1.9;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+        }
+
+        .credentials {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(93, 29, 46, 0.1);
+        }
+
+        .credential {
+            text-align: center;
+        }
+
+        .credential-value {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--burgundy);
+            display: block;
+        }
+
+        .credential-label {
+            font-size: 0.85rem;
+            color: var(--charcoal-light);
+            letter-spacing: 0.05em;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 8rem 2rem;
+            background: var(--cream-dark);
+        }
+
+        .services-container {
             max-width: 1200px;
             margin: 0 auto;
         }
 
-        header {
+        .services-header {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
         }
 
-        .badge {
-            display: inline-block;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 0.5rem 1rem;
-            border-radius: 2rem;
-            font-size: 0.85rem;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            margin-bottom: 1.5rem;
-            color: #94a3b8;
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
         }
 
-        h1 {
-            font-size: clamp(2rem, 5vw, 3rem);
-            font-weight: 700;
-            line-height: 1.2;
+        .service-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border: 1px solid rgba(93, 29, 46, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(93, 29, 46, 0.08);
+        }
+
+        .service-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            font-weight: 300;
+            color: var(--gold);
+            line-height: 1;
             margin-bottom: 1rem;
-            background: linear-gradient(90deg, #fff 0%, #94a3b8 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
         }
 
-        .subtitle {
-            font-size: 1.125rem;
-            color: #94a3b8;
-            max-width: 700px;
+        .service-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--burgundy);
+            margin-bottom: 1rem;
+        }
+
+        .service-desc {
+            font-size: 0.95rem;
+            color: var(--charcoal-light);
+            line-height: 1.7;
+        }
+
+        /* Framework Section */
+        .framework {
+            padding: 8rem 2rem;
+            background: var(--burgundy);
+            color: var(--cream);
+        }
+
+        .framework-container {
+            max-width: 1200px;
             margin: 0 auto;
-            line-height: 1.6;
         }
 
-        .section-title {
+        .framework-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .framework .section-label {
+            color: var(--gold);
+        }
+
+        .framework .section-title {
+            color: var(--cream);
+        }
+
+        .framework-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+        }
+
+        .framework-item {
+            padding: 2.5rem 2rem;
+            text-align: center;
+            border-right: 1px solid rgba(250, 247, 242, 0.15);
+            transition: all 0.3s;
+        }
+
+        .framework-item:last-child {
+            border-right: none;
+        }
+
+        .framework-item:hover {
+            background: rgba(250, 247, 242, 0.05);
+        }
+
+        .framework-era {
+            font-family: 'Cormorant Garamond', serif;
             font-size: 1.25rem;
             font-weight: 600;
-            color: #cbd5e1;
-            margin: 2.5rem 0 1.5rem;
-            padding-bottom: 0.75rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--gold);
+            margin-bottom: 0.75rem;
+        }
+
+        .framework-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.75rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .framework-desc {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: rgba(250, 247, 242, 0.8);
+        }
+
+        /* Courses Section */
+        .courses {
+            padding: 8rem 2rem;
+            background: var(--white);
+        }
+
+        .courses-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .courses-header {
+            text-align: center;
+            margin-bottom: 4rem;
         }
 
         .courses-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
             gap: 1.5rem;
         }
 
         .course-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 1rem;
-            padding: 1.5rem;
-            transition: all 0.2s ease;
+            background: var(--cream);
+            border: 1px solid rgba(93, 29, 46, 0.08);
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .course-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--gold);
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
         }
 
         .course-card:hover {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(255, 255, 255, 0.2);
             transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(93, 29, 46, 0.08);
+        }
+
+        .course-card:hover::before {
+            transform: scaleY(1);
         }
 
         .course-number {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 32px;
-            height: 32px;
-            background: rgba(59, 130, 246, 0.2);
-            color: #60a5fa;
-            border-radius: 50%;
-            font-size: 0.85rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
             font-weight: 600;
-            margin-bottom: 1rem;
+            color: var(--gold);
+            letter-spacing: 0.1em;
+            margin-bottom: 0.75rem;
         }
 
         .course-title {
-            font-size: 1.125rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.35rem;
             font-weight: 600;
-            color: #f1f5f9;
+            color: var(--burgundy);
             margin-bottom: 0.75rem;
-            line-height: 1.4;
+            line-height: 1.35;
         }
 
         .course-desc {
             font-size: 0.9rem;
-            color: #94a3b8;
-            line-height: 1.5;
-            margin-bottom: 1.25rem;
+            color: var(--charcoal-light);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
         }
 
-        .launch-btn {
+        .course-link {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            background: #3b82f6;
-            color: #fff;
+            color: var(--burgundy);
             text-decoration: none;
-            padding: 0.625rem 1.25rem;
-            border-radius: 0.5rem;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 500;
-            transition: all 0.2s ease;
+            letter-spacing: 0.05em;
+            transition: all 0.2s;
         }
 
-        .launch-btn:hover {
-            background: #2563eb;
+        .course-link:hover {
+            color: var(--gold);
+            gap: 0.75rem;
         }
 
-        .launch-btn svg {
+        .course-link svg {
             width: 16px;
             height: 16px;
         }
 
-        footer {
-            text-align: center;
-            margin-top: 4rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 0.85rem;
-            color: #64748b;
+        /* Contact Section */
+        .contact {
+            padding: 8rem 2rem;
+            background: var(--cream-dark);
         }
 
-        footer a {
-            color: #94a3b8;
+        .contact-container {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact .section-title {
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-text {
+            font-size: 1.125rem;
+            color: var(--charcoal-light);
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 2rem;
+            background: var(--charcoal);
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-text {
+            font-size: 0.9rem;
+            color: rgba(250, 247, 242, 0.6);
+        }
+
+        .footer-text a {
+            color: var(--gold);
             text-decoration: none;
         }
 
-        footer a:hover {
-            color: #f1f5f9;
+        .footer-text a:hover {
+            text-decoration: underline;
         }
 
-        @media (max-width: 768px) {
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .hero-visual {
+                max-width: 500px;
+            }
+
+            .framework-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .framework-item {
+                border-bottom: 1px solid rgba(250, 247, 242, 0.15);
+            }
+
+            .framework-item:nth-child(2) {
+                border-right: none;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero {
+                padding: 7rem 1.5rem 3rem;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+            }
+
+            .btn {
+                justify-content: center;
+            }
+
+            .credentials {
+                gap: 2rem;
+            }
+
+            .framework-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .framework-item {
+                border-right: none;
+            }
+
             .courses-grid {
                 grid-template-columns: 1fr;
             }
@@ -168,133 +630,306 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <span class="badge">eLearning Course Collection</span>
-            <h1>4th Industrial Revolution Learning Hub</h1>
-            <p class="subtitle">
-                A comprehensive course series exploring the industrial revolutions, their impact on education,
-                and the transformative technologies shaping our future.
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">Dr. Marie Martin</a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#framework">Framework</a></li>
+                <li><a href="#courses">Courses</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <p class="hero-eyebrow">Education Consulting</p>
+                <h1>Transforming Schools for the <em>Fourth Industrial Revolution</em></h1>
+                <p class="hero-text">
+                    Guiding superintendents, school boards, and district leaders through the fundamental
+                    shifts required to prepare students for an AI-driven, interconnected world.
+                </p>
+                <div class="hero-cta">
+                    <a href="#contact" class="btn btn-primary">Schedule a Consultation</a>
+                    <a href="#courses" class="btn btn-secondary">Explore the Courses</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-accent-box">
+                    <p class="hero-quote">
+                        "Public school systems must move beyond 21st century mindsets to truly prepare
+                        students for the realities of the Fourth Industrial Revolution."
+                    </p>
+                    <p class="hero-attribution">Dr. Marie Martin</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="about-container">
+            <p class="section-label">About</p>
+            <h2 class="section-title">A Vision for Equitable Education Transformation</h2>
+            <p class="about-text">
+                Dr. Marie Martin is an educational leader dedicated to helping school districts navigate
+                the complexities of Education 4.0. With expertise in change management, critical frameworks
+                for equity, and emerging technologies, she partners with superintendents to create actionable
+                roadmaps for systemic transformation that serves all students.
             </p>
-        </header>
-
-        <h2 class="section-title">Industrial Revolutions Timeline</h2>
-        <div class="courses-grid">
-            <div class="course-card">
-                <span class="course-number">1</span>
-                <h3 class="course-title">History of Education and the Industrial Revolution</h3>
-                <p class="course-desc">Explore how education systems evolved alongside industrial development and the foundations of modern learning.</p>
-                <a href="courses/history-of-education/index.html" target="_blank" class="launch-btn">
-                    Launch Course
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                    </svg>
-                </a>
-            </div>
-
-            <div class="course-card">
-                <span class="course-number">2</span>
-                <h3 class="course-title">The First Industrial Revolution</h3>
-                <p class="course-desc">Discover the mechanization era (1760-1840): steam power, textile manufacturing, and the birth of factories.</p>
-                <a href="courses/first-industrial-revolution/index.html" target="_blank" class="launch-btn">
-                    Launch Course
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                    </svg>
-                </a>
-            </div>
-
-            <div class="course-card">
-                <span class="course-number">3</span>
-                <h3 class="course-title">The Second Industrial Revolution</h3>
-                <p class="course-desc">Learn about the age of electricity and mass production (1870-1914): steel, oil, and assembly lines.</p>
-                <a href="courses/second-industrial-revolution/index.html" target="_blank" class="launch-btn">
-                    Launch Course
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                    </svg>
-                </a>
-            </div>
-
-            <div class="course-card">
-                <span class="course-number">4</span>
-                <h3 class="course-title">The Third Industrial Revolution</h3>
-                <p class="course-desc">Explore the digital revolution (1960s-2000s): computers, the internet, and the information age.</p>
-                <a href="courses/third-industrial-revolution/index.html" target="_blank" class="launch-btn">
-                    Launch Course
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                    </svg>
-                </a>
-            </div>
-
-            <div class="course-card">
-                <span class="course-number">5</span>
-                <h3 class="course-title">Introduction to Industrial Revolution 4.0 and Disruptive Technologies</h3>
-                <p class="course-desc">Dive into AI, IoT, robotics, and biotechnology transforming industries and society today.</p>
-                <a href="courses/intro-4ir-disruptive-tech/index.html" target="_blank" class="launch-btn">
-                    Launch Course
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                    </svg>
-                </a>
-            </div>
-
-            <div class="course-card">
-                <span class="course-number">6</span>
-                <h3 class="course-title">Educational Transformation in the Era of the 4th Industrial Revolution</h3>
-                <p class="course-desc">Understand how 4IR technologies are reshaping learning, teaching methods, and educational institutions.</p>
-                <a href="courses/educational-transformation-4ir/index.html" target="_blank" class="launch-btn">
-                    Launch Course
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                    </svg>
-                </a>
+            <div class="credentials">
+                <div class="credential">
+                    <span class="credential-value">Ed.L.</span>
+                    <span class="credential-label">Doctorate in Education</span>
+                </div>
+                <div class="credential">
+                    <span class="credential-value">15+</span>
+                    <span class="credential-label">Years in Education</span>
+                </div>
+                <div class="credential">
+                    <span class="credential-value">K-12</span>
+                    <span class="credential-label">District Focus</span>
+                </div>
             </div>
         </div>
+    </section>
 
-        <h2 class="section-title">Education & Equity</h2>
-        <div class="courses-grid">
-            <div class="course-card">
-                <span class="course-number">7</span>
-                <h3 class="course-title">The Industrial Revolutions' Impact on Education</h3>
-                <p class="course-desc">Analyze how each industrial revolution transformed educational systems, access, and curriculum.</p>
-                <a href="courses/industrial-revolutions-education/index.html" target="_blank" class="launch-btn">
-                    Launch Course
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                    </svg>
-                </a>
+    <section class="services" id="services">
+        <div class="services-container">
+            <div class="services-header">
+                <p class="section-label">Services</p>
+                <h2 class="section-title">Consulting Services</h2>
             </div>
-
-            <div class="course-card">
-                <span class="course-number">8</span>
-                <h3 class="course-title">African American Contributions in Education</h3>
-                <p class="course-desc">Celebrate the pioneering educators and innovations from the African American community.</p>
-                <a href="courses/african-american-contributions/index.html" target="_blank" class="launch-btn">
-                    Launch Course
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                    </svg>
-                </a>
-            </div>
-
-            <div class="course-card">
-                <span class="course-number">9</span>
-                <h3 class="course-title">African Americans and Access to Education During the Revolutions</h3>
-                <p class="course-desc">Examine the challenges and triumphs in educational access throughout American history.</p>
-                <a href="courses/african-american-access/index.html" target="_blank" class="launch-btn">
-                    Launch Course
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                    </svg>
-                </a>
+            <div class="services-grid">
+                <div class="service-card">
+                    <span class="service-number">01</span>
+                    <h3 class="service-title">Strategic Vision Development</h3>
+                    <p class="service-desc">
+                        Collaborate with leadership to define a district-wide vision for Education 4.0
+                        that aligns with community values and prepares students for emerging careers.
+                    </p>
+                </div>
+                <div class="service-card">
+                    <span class="service-number">02</span>
+                    <h3 class="service-title">Change Management</h3>
+                    <p class="service-desc">
+                        Apply Kotter's proven framework to build urgency, create coalitions, and sustain
+                        momentum through comprehensive educational transformation.
+                    </p>
+                </div>
+                <div class="service-card">
+                    <span class="service-number">03</span>
+                    <h3 class="service-title">Equity-Centered Design</h3>
+                    <p class="service-desc">
+                        Integrate critical frameworks to ensure transformation efforts address historical
+                        inequities and create pathways for all students.
+                    </p>
+                </div>
+                <div class="service-card">
+                    <span class="service-number">04</span>
+                    <h3 class="service-title">Administrator & Teacher Training</h3>
+                    <p class="service-desc">
+                        Professional development programs that build capacity for leading and teaching
+                        in technology-rich, student-centered learning environments.
+                    </p>
+                </div>
+                <div class="service-card">
+                    <span class="service-number">05</span>
+                    <h3 class="service-title">Technology Integration Strategy</h3>
+                    <p class="service-desc">
+                        Assess readiness and develop phased implementation plans for AI, adaptive learning,
+                        and other 4IR technologies in educational settings.
+                    </p>
+                </div>
+                <div class="service-card">
+                    <span class="service-number">06</span>
+                    <h3 class="service-title">Curriculum Reimagination</h3>
+                    <p class="service-desc">
+                        Partner with curriculum teams to evolve learning experiences that develop
+                        future-ready skills while honoring diverse student backgrounds.
+                    </p>
+                </div>
             </div>
         </div>
+    </section>
 
-        <footer>
-            <p>9 courses built with <a href="https://articulate.com/360/rise" target="_blank">Articulate Rise</a></p>
-        </footer>
-    </div>
+    <section class="framework" id="framework">
+        <div class="framework-container">
+            <div class="framework-header">
+                <p class="section-label">Framework</p>
+                <h2 class="section-title">The Evolution of Education</h2>
+            </div>
+            <div class="framework-grid">
+                <div class="framework-item">
+                    <p class="framework-era">1760s-1840s</p>
+                    <h3 class="framework-name">Education 1.0</h3>
+                    <p class="framework-desc">
+                        Teacher-centered instruction. Rote memorization. Standardized classrooms for industrial workers.
+                    </p>
+                </div>
+                <div class="framework-item">
+                    <p class="framework-era">1870s-1970s</p>
+                    <h3 class="framework-name">Education 2.0</h3>
+                    <p class="framework-desc">
+                        Mass education expansion. Textbooks and curricula. Specialized subject teaching.
+                    </p>
+                </div>
+                <div class="framework-item">
+                    <p class="framework-era">1990s-2010s</p>
+                    <h3 class="framework-name">Education 3.0</h3>
+                    <p class="framework-desc">
+                        Digital integration. Internet research. Learning management systems.
+                    </p>
+                </div>
+                <div class="framework-item">
+                    <p class="framework-era">Now</p>
+                    <h3 class="framework-name">Education 4.0</h3>
+                    <p class="framework-desc">
+                        AI-powered personalization. Human-machine collaboration. Lifelong adaptive learning.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="courses" id="courses">
+        <div class="courses-container">
+            <div class="courses-header">
+                <p class="section-label">Learning Resources</p>
+                <h2 class="section-title">Professional Development Courses</h2>
+            </div>
+            <div class="courses-grid">
+                <article class="course-card">
+                    <span class="course-number">Course 01</span>
+                    <h3 class="course-title">History of Education and the Industrial Revolution</h3>
+                    <p class="course-desc">Explore how education systems evolved alongside industrial development and the foundations of modern learning.</p>
+                    <a href="courses/history-of-education/index.html" target="_blank" class="course-link">
+                        Launch Course
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                    </a>
+                </article>
+
+                <article class="course-card">
+                    <span class="course-number">Course 02</span>
+                    <h3 class="course-title">The First Industrial Revolution</h3>
+                    <p class="course-desc">Discover the mechanization era (1760-1840): steam power, textile manufacturing, and the birth of factories.</p>
+                    <a href="courses/first-industrial-revolution/index.html" target="_blank" class="course-link">
+                        Launch Course
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                    </a>
+                </article>
+
+                <article class="course-card">
+                    <span class="course-number">Course 03</span>
+                    <h3 class="course-title">The Second Industrial Revolution</h3>
+                    <p class="course-desc">Learn about the age of electricity and mass production (1870-1914): steel, oil, and assembly lines.</p>
+                    <a href="courses/second-industrial-revolution/index.html" target="_blank" class="course-link">
+                        Launch Course
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                    </a>
+                </article>
+
+                <article class="course-card">
+                    <span class="course-number">Course 04</span>
+                    <h3 class="course-title">The Third Industrial Revolution</h3>
+                    <p class="course-desc">Explore the digital revolution (1960s-2000s): computers, the internet, and the information age.</p>
+                    <a href="courses/third-industrial-revolution/index.html" target="_blank" class="course-link">
+                        Launch Course
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                    </a>
+                </article>
+
+                <article class="course-card">
+                    <span class="course-number">Course 05</span>
+                    <h3 class="course-title">Introduction to Industrial Revolution 4.0 and Disruptive Technologies</h3>
+                    <p class="course-desc">Dive into AI, IoT, robotics, and biotechnology transforming industries and society today.</p>
+                    <a href="courses/intro-4ir-disruptive-tech/index.html" target="_blank" class="course-link">
+                        Launch Course
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                    </a>
+                </article>
+
+                <article class="course-card">
+                    <span class="course-number">Course 06</span>
+                    <h3 class="course-title">Educational Transformation in the Era of the 4th Industrial Revolution</h3>
+                    <p class="course-desc">Understand how 4IR technologies are reshaping learning, teaching methods, and educational institutions.</p>
+                    <a href="courses/educational-transformation-4ir/index.html" target="_blank" class="course-link">
+                        Launch Course
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                    </a>
+                </article>
+
+                <article class="course-card">
+                    <span class="course-number">Course 07</span>
+                    <h3 class="course-title">The Industrial Revolutions' Impact on Education</h3>
+                    <p class="course-desc">Analyze how each industrial revolution transformed educational systems, access, and curriculum.</p>
+                    <a href="courses/industrial-revolutions-education/index.html" target="_blank" class="course-link">
+                        Launch Course
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                    </a>
+                </article>
+
+                <article class="course-card">
+                    <span class="course-number">Course 08</span>
+                    <h3 class="course-title">African American Contributions in Education</h3>
+                    <p class="course-desc">Celebrate the pioneering educators and innovations from the African American community.</p>
+                    <a href="courses/african-american-contributions/index.html" target="_blank" class="course-link">
+                        Launch Course
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                    </a>
+                </article>
+
+                <article class="course-card">
+                    <span class="course-number">Course 09</span>
+                    <h3 class="course-title">African Americans and Access to Education During the Revolutions</h3>
+                    <p class="course-desc">Examine the challenges and triumphs in educational access throughout American history.</p>
+                    <a href="courses/african-american-access/index.html" target="_blank" class="course-link">
+                        Launch Course
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                    </a>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="contact-container">
+            <p class="section-label">Get Started</p>
+            <h2 class="section-title">Ready to Transform Your District?</h2>
+            <p class="contact-text">
+                Schedule a consultation to discuss your district's vision, challenges, and opportunities
+                for leading educational transformation in the Fourth Industrial Revolution.
+            </p>
+            <a href="mailto:contact@drmariemartin.com" class="btn btn-primary">Contact Dr. Martin</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <p class="footer-text">
+                9 professional development courses built with <a href="https://articulate.com/360/rise" target="_blank">Articulate Rise</a>
+            </p>
+        </div>
+    </footer>
 </body>
 </html>
