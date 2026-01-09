@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Introduction to the Industrial Revolution 4.0</title>
+    <title>4th Industrial Revolution Learning Hub</title>
     <style>
         * {
             margin: 0;
@@ -15,17 +15,18 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
             background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
             padding: 2rem;
             color: #e8e8e8;
         }
 
         .container {
-            max-width: 720px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
             text-align: center;
+            margin-bottom: 3rem;
         }
 
         .badge {
@@ -45,118 +46,255 @@
             font-size: clamp(2rem, 5vw, 3rem);
             font-weight: 700;
             line-height: 1.2;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             background: linear-gradient(90deg, #fff 0%, #94a3b8 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
-        .description {
+        .subtitle {
             font-size: 1.125rem;
-            line-height: 1.7;
             color: #94a3b8;
-            margin-bottom: 2.5rem;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
         }
 
-        .topics {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.75rem;
-            justify-content: center;
-            margin-bottom: 2.5rem;
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #cbd5e1;
+            margin: 2.5rem 0 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .topic {
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .course-card {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 0.5rem 1rem;
-            border-radius: 0.5rem;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            transition: all 0.2s ease;
+        }
+
+        .course-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-4px);
+        }
+
+        .course-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            background: rgba(59, 130, 246, 0.2);
+            color: #60a5fa;
+            border-radius: 50%;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .course-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #f1f5f9;
+            margin-bottom: 0.75rem;
+            line-height: 1.4;
+        }
+
+        .course-desc {
             font-size: 0.9rem;
-            color: #cbd5e1;
+            color: #94a3b8;
+            line-height: 1.5;
+            margin-bottom: 1.25rem;
         }
 
         .launch-btn {
             display: inline-flex;
             align-items: center;
-            gap: 0.75rem;
+            gap: 0.5rem;
             background: #3b82f6;
             color: #fff;
             text-decoration: none;
-            padding: 1rem 2rem;
-            border-radius: 0.75rem;
-            font-size: 1.125rem;
-            font-weight: 600;
+            padding: 0.625rem 1.25rem;
+            border-radius: 0.5rem;
+            font-size: 0.9rem;
+            font-weight: 500;
             transition: all 0.2s ease;
-            box-shadow: 0 4px 14px rgba(59, 130, 246, 0.4);
         }
 
         .launch-btn:hover {
             background: #2563eb;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5);
         }
 
         .launch-btn svg {
-            width: 20px;
-            height: 20px;
+            width: 16px;
+            height: 16px;
         }
 
-        .note {
-            margin-top: 2rem;
+        footer {
+            text-align: center;
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
             font-size: 0.85rem;
             color: #64748b;
         }
 
-        footer {
-            position: fixed;
-            bottom: 1.5rem;
-            font-size: 0.8rem;
-            color: #475569;
-        }
-
         footer a {
-            color: #64748b;
+            color: #94a3b8;
             text-decoration: none;
         }
 
         footer a:hover {
-            color: #94a3b8;
+            color: #f1f5f9;
+        }
+
+        @media (max-width: 768px) {
+            .courses-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <span class="badge">eLearning Course</span>
+        <header>
+            <span class="badge">eLearning Course Collection</span>
+            <h1>4th Industrial Revolution Learning Hub</h1>
+            <p class="subtitle">
+                A comprehensive course series exploring the industrial revolutions, their impact on education,
+                and the transformative technologies shaping our future.
+            </p>
+        </header>
 
-        <h1>Introduction to the Industrial Revolution 4.0 and Disruptive Technologies</h1>
+        <h2 class="section-title">Industrial Revolutions Timeline</h2>
+        <div class="courses-grid">
+            <div class="course-card">
+                <span class="course-number">1</span>
+                <h3 class="course-title">History of Education and the Industrial Revolution</h3>
+                <p class="course-desc">Explore how education systems evolved alongside industrial development and the foundations of modern learning.</p>
+                <a href="courses/history-of-education/index.html" target="_blank" class="launch-btn">
+                    Launch Course
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                </a>
+            </div>
 
-        <p class="description">
-            Explore how artificial intelligence, robotics, IoT, and biotechnology are transforming
-            industries and education. Understand the skills needed to thrive in the 4th Industrial Revolution.
-        </p>
+            <div class="course-card">
+                <span class="course-number">2</span>
+                <h3 class="course-title">The First Industrial Revolution</h3>
+                <p class="course-desc">Discover the mechanization era (1760-1840): steam power, textile manufacturing, and the birth of factories.</p>
+                <a href="courses/first-industrial-revolution/index.html" target="_blank" class="launch-btn">
+                    Launch Course
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                </a>
+            </div>
 
-        <div class="topics">
-            <span class="topic">Artificial Intelligence</span>
-            <span class="topic">Internet of Things</span>
-            <span class="topic">Advanced Robotics</span>
-            <span class="topic">Biotechnology</span>
-            <span class="topic">Future of Education</span>
-            <span class="topic">21st Century Skills</span>
+            <div class="course-card">
+                <span class="course-number">3</span>
+                <h3 class="course-title">The Second Industrial Revolution</h3>
+                <p class="course-desc">Learn about the age of electricity and mass production (1870-1914): steel, oil, and assembly lines.</p>
+                <a href="courses/second-industrial-revolution/index.html" target="_blank" class="launch-btn">
+                    Launch Course
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                </a>
+            </div>
+
+            <div class="course-card">
+                <span class="course-number">4</span>
+                <h3 class="course-title">The Third Industrial Revolution</h3>
+                <p class="course-desc">Explore the digital revolution (1960s-2000s): computers, the internet, and the information age.</p>
+                <a href="courses/third-industrial-revolution/index.html" target="_blank" class="launch-btn">
+                    Launch Course
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                </a>
+            </div>
+
+            <div class="course-card">
+                <span class="course-number">5</span>
+                <h3 class="course-title">Introduction to Industrial Revolution 4.0 and Disruptive Technologies</h3>
+                <p class="course-desc">Dive into AI, IoT, robotics, and biotechnology transforming industries and society today.</p>
+                <a href="courses/intro-4ir-disruptive-tech/index.html" target="_blank" class="launch-btn">
+                    Launch Course
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                </a>
+            </div>
+
+            <div class="course-card">
+                <span class="course-number">6</span>
+                <h3 class="course-title">Educational Transformation in the Era of the 4th Industrial Revolution</h3>
+                <p class="course-desc">Understand how 4IR technologies are reshaping learning, teaching methods, and educational institutions.</p>
+                <a href="courses/educational-transformation-4ir/index.html" target="_blank" class="launch-btn">
+                    Launch Course
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                </a>
+            </div>
         </div>
 
-        <a href="course/index.html" target="_blank" class="launch-btn">
-            Launch Course
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-            </svg>
-        </a>
+        <h2 class="section-title">Education & Equity</h2>
+        <div class="courses-grid">
+            <div class="course-card">
+                <span class="course-number">7</span>
+                <h3 class="course-title">The Industrial Revolutions' Impact on Education</h3>
+                <p class="course-desc">Analyze how each industrial revolution transformed educational systems, access, and curriculum.</p>
+                <a href="courses/industrial-revolutions-education/index.html" target="_blank" class="launch-btn">
+                    Launch Course
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                </a>
+            </div>
 
-        <p class="note">Opens in a new tab for the best learning experience</p>
+            <div class="course-card">
+                <span class="course-number">8</span>
+                <h3 class="course-title">African American Contributions in Education</h3>
+                <p class="course-desc">Celebrate the pioneering educators and innovations from the African American community.</p>
+                <a href="courses/african-american-contributions/index.html" target="_blank" class="launch-btn">
+                    Launch Course
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                </a>
+            </div>
+
+            <div class="course-card">
+                <span class="course-number">9</span>
+                <h3 class="course-title">African Americans and Access to Education During the Revolutions</h3>
+                <p class="course-desc">Examine the challenges and triumphs in educational access throughout American history.</p>
+                <a href="courses/african-american-access/index.html" target="_blank" class="launch-btn">
+                    Launch Course
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <footer>
+            <p>9 courses built with <a href="https://articulate.com/360/rise" target="_blank">Articulate Rise</a></p>
+        </footer>
     </div>
-
-    <footer>
-        Built with <a href="https://articulate.com/360/rise" target="_blank">Articulate Rise</a>
-    </footer>
 </body>
 </html>
